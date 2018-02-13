@@ -18,6 +18,7 @@ server=1
 rest=1
 rpcuser=${RPCUSER:-bitcoinrpc}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
+rpcallowip=::/0
 EOF
 
 	case "$NETWORK" in
