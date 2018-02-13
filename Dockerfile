@@ -43,4 +43,5 @@ RUN chmod a+x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
+EXPOSE 8332 18332
 CMD ["bitcoind", "-conf=/data/bitcoin.conf", "-datadir=/data", "-printtoconsole"]

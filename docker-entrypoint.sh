@@ -43,6 +43,15 @@ EOF
 
 	chmod 600 /data/bitcoin.conf
 	chown bitcoin:bitcoin /data/bitcoin.conf
+
+	mkdir -p /root/.bitcoin
+	mkdir -p /home/bitcoin/.bitcoin
+
+	chown bitcoin:bitcoin /root/.bitcoin
+	chown bitcoin:bitcoin /home/bitcoin/.bitcoin
+
+	ln -s /data/bitcoin.conf /root/.bitcoin/bitcoin.conf
+	ln -s /data/bitcoin.conf /home/bitcoin/.bitcoin/bitcoin.conf
 fi
 
 chown -R bitcoin:bitcoin /data
