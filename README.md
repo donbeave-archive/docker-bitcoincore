@@ -4,7 +4,7 @@
 
 ### Summary
 
-Docker container with OpenVPN and Java 8 (JVM) inside, created to run java applications which need to use openvpn as a client.
+Docker container with Bitcoin Core.
 
 ### Docker image
 
