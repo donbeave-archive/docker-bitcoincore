@@ -21,7 +21,7 @@ ENV GOSU_VERSION=1.10
 RUN curl -o /usr/local/bin/gosu -fSL https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture) \
   && chmod +x /usr/local/bin/gosu
 
-ENV BITCOIN_VERSION=0.16.2
+ENV BITCOIN_VERSION=0.16.3
 
 RUN wget --no-cookies "https://bitcoincore.org/bin/bitcoin-core-${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz" \
     && tar -xzvf bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz \
