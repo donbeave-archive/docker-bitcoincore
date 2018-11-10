@@ -25,11 +25,12 @@ ENV BITCOIN_VERSION=0.17.0.1
 
 RUN wget --no-cookies "https://bitcoincore.org/bin/bitcoin-core-${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz" \
     && tar -xzvf bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz \
-    && mv bitcoin-${BITCOIN_VERSION}/bin/* /usr/local/bin/ \
-    && mv bitcoin-${BITCOIN_VERSION}/include/* /usr/local/include/ \
-    && mv bitcoin-${BITCOIN_VERSION}/lib/* /usr/local/lib/ \
-    && mv bitcoin-${BITCOIN_VERSION}/share/* /usr/local/share/ \
-    && rm -r bitcoin-${BITCOIN_VERSION} bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz
+    && rm -r bitcoin-${BITCOIN_VERSION}-x86_64-linux-gnu.tar.gz \
+    && mv bitcoin-*/bin/* /usr/local/bin/ \
+    && mv bitcoin-*/include/* /usr/local/include/ \
+    && mv bitcoin-*/lib/* /usr/local/lib/ \
+    && mv bitcoin-*/share/* /usr/local/share/ \
+    && rm -r bitcoin-*
 
 RUN mkdir /data \
     && chown bitcoin:bitcoin /data
