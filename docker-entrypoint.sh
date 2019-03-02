@@ -59,6 +59,7 @@ chown -R bitcoin:bitcoin /data
 
 cat /data/bitcoin.conf
 
+mkdir -p /root/.bitcoin
 cp /data/bitcoin.conf /root/.bitcoin/bitcoin.conf
 
 echo "Initialization completed successfully"
