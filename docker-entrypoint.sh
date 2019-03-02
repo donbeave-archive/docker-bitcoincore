@@ -59,6 +59,8 @@ chown -R bitcoin:bitcoin /data
 
 cat /data/bitcoin.conf
 
+cp /data/bitcoin.conf /root/.bitcoin/bitcoin.conf
+
 echo "Initialization completed successfully"
 
 if [ "$1" = "bitcoind" ] || [ "$1" = "bitcoin-cli" ] || [ "$1" = "bitcoin-tx" ]; then
