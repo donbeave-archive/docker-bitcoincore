@@ -18,6 +18,7 @@ server=1
 rest=1
 rpcuser=${RPCUSER:-bitcoinrpc}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
+rpcbind=0.0.0.0
 rpcallowip=::/0
 EOF
 
@@ -60,7 +61,10 @@ chown -R bitcoin:bitcoin /data
 cat /data/bitcoin.conf
 
 mkdir -p /root/.bitcoin
-cp /data/bitcoin.conf /root/.bitcoin/bitcoin.conf
+
+if [ ! -f "/root/.bitcoin/bitcoin.conf" ]; then
+    cp /data/bitcoin.conf /root/.bitcoin/bitcoin.conf
+fi
 
 echo "Initialization completed successfully"
 
