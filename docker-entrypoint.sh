@@ -3,6 +3,8 @@ set -e
 
 NETWORK="${NETWORK:=mainnet}"
 
+NODE_NAME=$(hostname)
+
 # This shouldn't be in the Dockerfile or containers built from the same image
 # will have the same credentials.
 if [ ! -e "/data/bitcoin.conf" ]; then
@@ -18,8 +20,9 @@ server=1
 rest=1
 rpcuser=${RPCUSER:-bitcoinrpc}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
-rpcbind=0.0.0.0
-rpcallowip=::/0
+rpcallowip=0.0.0.0/0
+rpcbind=0.0.0.0:8332
+rpcbind=${NODE_NAME}
 EOF
 
 	case "$NETWORK" in
@@ -30,11 +33,17 @@ EOF
 	    testnet)
 	    	echo "Connect to testnet"
 	    	echo "testnet=1" >> /data/bitcoin.conf
+	    	echo "test.rpcallowip=0.0.0.0/0" >> /data/bitcoin.conf
+			echo "test.rpcbind=0.0.0.0:8332" >> /data/bitcoin.conf
+			echo "test.rpcbind=${NODE_NAME}" >> /data/bitcoin.conf
 	        ;;
 
 	    regtest)
 	    	echo "Use regtest mode"
 	    	echo "regtest=1" >> /data/bitcoin.conf
+	    	echo "regtest.rpcallowip=0.0.0.0/0" >> /data/bitcoin.conf
+			echo "regtest.rpcbind=0.0.0.0:8332" >> /data/bitcoin.conf
+			echo "regtest.rpcbind=${NODE_NAME}" >> /data/bitcoin.conf
 	        ;;
 
 	    *)
